@@ -4,21 +4,21 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Remove</th>
+                <th>Title</th>
+                <th>Completed?</th>
+                <th>Toggle Completed</th>
             </tr>
         </thead>
     );
 }
 
-const TableBody = props => { 
-    const rows = props.todoData.map((row, index) => {
+const TableBody = props => {
+    const rows = props.todoData.map((todo, index) => {
         return (
             <tr key={index}>
-                <td>{row.name}</td>
-                <td>{row.job}</td>
-                <td><button onClick={() => props.removeTodo(index)}>Delete</button></td>
+                <td>{todo.title}</td>
+                <td>{todo.completed ? 'YES' : 'NO'}</td>
+                <td><button onClick={() => props.updateTodo(todo.id)}>Toggle Completed</button></td>
             </tr>
         );
     });
@@ -27,11 +27,11 @@ const TableBody = props => {
 }
 
 const Table = (props) => {
-    const { todoData, removeTodo } = props;
+    const { todoData, updateTodo } = props;
         return (
             <table>
                 <TableHeader />
-                <TableBody todoData={todoData} removeTodo={removeTodo} />
+                <TableBody todoData={todoData} updateTodo={updateTodo} />
             </table>
         );
 }
