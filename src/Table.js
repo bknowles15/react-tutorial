@@ -1,40 +1,21 @@
 import React from 'react';
 
-const TableHeader = () => { 
-    return (
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Completed?</th>
-                <th>Toggle Completed</th>
-            </tr>
-        </thead>
-    );
+const TableHeader = () => {
+    // FIXME: Other functions here
+
+    return <div>{/* FIXME: Replace this div with table header */}</div>
 }
 
 const TableBody = (props) => {
-    const rows = props.todoData.map((todo, index) => {
-        return (
-            <tr key={index}>
-                <td>{todo.title}</td>
-                <td>{todo.completed ? 'YES' : 'NO'}</td>
-                <td><button onClick={() => props.updateTodo(index)}>Toggle Completed</button></td>
-            </tr>
-        );
-    });
+    // FIXME: Other functions here
 
-    return <tbody>{rows}</tbody>;
+    return <div>{/* FIXME: Replace this div with table body */}</div>;
 }
 
 const Table = (props) => {
-    const { todoData, updateTodo } = props;
+    // FIXME: Other functions here
 
-    return (
-        <table>
-            <TableHeader />
-            <TableBody todoData={todoData} updateTodo={updateTodo} />
-        </table>
-    );
+    return <div>{/* FIXME: Replace this div with table header and body */}</div>
 }
 
 export default Table;
