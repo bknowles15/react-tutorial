@@ -13,10 +13,10 @@ const App = () => {
             .catch(error => console.log(error));
       }, [])
 
-    const handleSubmit = todo => {
+    const handleSubmit = title => {
         const newTodo = {
-            id: todos[todos.length - 1].id + 1,
-            title: todo.title,
+            id: todos.length + 1,
+            title: title,
             completed: false
         }
         console.log(newTodo);
