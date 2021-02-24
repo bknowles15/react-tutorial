@@ -4,33 +4,33 @@ import Form from './Form';
 
 class App extends Component {
     state = {
-        characters: []
+        todos: []
     };
 
-    removeCharacter = index => {
-        const { characters } = this.state;
+    removeTodo = index => {
+        const { todos } = this.state;
     
         this.setState({
-            characters: characters.filter((character, i) => { 
+            todos: todos.filter((todo, i) => { 
                 return i !== index;
             })
         });
     }
 
-    handleSubmit = character => {
-        this.setState({characters: [...this.state.characters, character]});
+    handleSubmit = todo => {
+        this.setState({todos: [...this.state.todos, todo]});
     }
 
     render() {
-        const { characters } = this.state;
+        const { todos } = this.state;
         
         return (
             <div className="container">
                 <h1>React Tutorial</h1>
-                <p>Add a character with a name and a job to the table.</p>
+                <p>Add a "Todo" with a name and time to the table.</p>
                 <Table
-                    characterData={characters}
-                    removeCharacter={this.removeCharacter}
+                    todoData={todos}
+                    removeTodo={this.removeTodo}
                 />
                 <h3>Add New</h3>
                 <Form handleSubmit={this.handleSubmit} />
