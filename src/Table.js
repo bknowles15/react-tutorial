@@ -12,13 +12,13 @@ const TableHeader = () => {
     );
 }
 
-const TableBody = props => {
+const TableBody = (props) => {
     const rows = props.todoData.map((todo, index) => {
         return (
             <tr key={index}>
                 <td>{todo.title}</td>
                 <td>{todo.completed ? 'YES' : 'NO'}</td>
-                <td><button onClick={() => props.updateTodo(todo.id)}>Toggle Completed</button></td>
+                <td><button onClick={() => props.updateTodo(index)}>Toggle Completed</button></td>
             </tr>
         );
     });
@@ -28,12 +28,13 @@ const TableBody = props => {
 
 const Table = (props) => {
     const { todoData, updateTodo } = props;
-        return (
-            <table>
-                <TableHeader />
-                <TableBody todoData={todoData} updateTodo={updateTodo} />
-            </table>
-        );
+
+    return (
+        <table>
+            <TableHeader />
+            <TableBody todoData={todoData} updateTodo={updateTodo} />
+        </table>
+    );
 }
 
 export default Table;

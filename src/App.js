@@ -4,27 +4,26 @@ import Table from './Table';
 import Form from './Form';
 
 const App = () => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]);
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.json())
-            .then(data => setTodos(data.slice(0, 3))) // Shorten for simplicity
+            .then(data => setTodos(data.slice(0, 3)))
             .catch(error => console.log(error));
-      }, [])
+    }, [])
 
-    const handleSubmit = title => {
+    const addTodo = (title) => {
         const newTodo = {
             id: todos.length + 1,
             title: title,
             completed: false
         }
         console.log(newTodo);
-        setTodos([...todos, newTodo])
+        setTodos([...todos, newTodo]);
     }
-    
-    const updateTodo = id => {
-        const index = todos.findIndex(todo => todo.id === id);
+
+    const updateTodo = index => {
         let updatedTodos = [...todos];
         updatedTodos[index].completed = !updatedTodos[index].completed;
         setTodos(updatedTodos);
@@ -33,52 +32,12 @@ const App = () => {
     return (
         <div className="container">
             <h1>React Tutorial</h1>
-            <p>Add a "Todo" with a name and time to the table.</p>
-            <Table
-                todoData={todos}
-                updateTodo={updateTodo}
-            />
+            <p>Add a "Todo" to the table.</p>
+            <Table todoData={todos} updateTodo={updateTodo} />
             <h3>Add New</h3>
-            <Form handleSubmit={handleSubmit} />
+            <Form addTodo={addTodo} />
         </div>
-    )
+    );
 }
-
-// class App extends Component {
-//     state = {
-//         todos: []
-//     };
-
-//     updateTodo = index => {
-//         const { todos } = this.state;
-    
-//         this.setState({
-//             todos: todos.filter((todo, i) => { 
-//                 return i !== index;
-//             })
-//         });
-//     }
-
-//     handleSubmit = todo => {
-//         this.setState({todos: [...this.state.todos, todo]});
-//     }
-
-//     render() {
-//         const { todos } = this.state;
-        
-//         return (
-//             <div className="container">
-//                 <h1>React Tutorial</h1>
-//                 <p>Add a "Todo" with a name and time to the table {React.version}.</p>
-//                 <Table
-//                     todoData={todos}
-//                     updateTodo={this.updateTodo}
-//                 />
-//                 <h3>Add New</h3>
-//                 <Form handleSubmit={this.handleSubmit} />
-//             </div>
-//         );
-//     }
-// }
 
 export default App;
