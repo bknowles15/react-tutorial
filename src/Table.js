@@ -18,7 +18,7 @@ const TableBody = (props) => {
             <tr key={index}>
                 <td>{todo.title}</td>
                 <td>{todo.completed ? 'YES' : 'NO'}</td>
-                <td><button onClick={() => props.updateTodo(index)}>Toggle Completed</button></td>
+                <td><button>Toggle Completed</button></td>
             </tr>
         );
     });
@@ -32,7 +32,7 @@ const Table = (props) => {
     return (
         <table>
             <TableHeader />
-            <TableBody todoData={todoData} updateTodo={updateTodo} />
+            <TableBody todoData={todoData} />
         </table>
     );
 }

@@ -9,7 +9,7 @@ const App = () => {
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.json())
-            .then(data => setTodos(data.slice(0, 3)))
+            .then(data => setTodos(data.slice(0, 3))) // Shorten for simplicity
             .catch(error => console.log(error));
     }, [])
 
@@ -23,17 +23,11 @@ const App = () => {
         setTodos([...todos, newTodo]);
     }
 
-    const updateTodo = index => {
-        let updatedTodos = [...todos];
-        updatedTodos[index].completed = !updatedTodos[index].completed;
-        setTodos(updatedTodos);
-    }
-
     return (
         <div className="container">
             <h1>React Tutorial</h1>
             <p>Add a "Todo" to the table.</p>
-            <Table todoData={todos} updateTodo={updateTodo} />
+            <Table todoData={todos} />
             <h3>Add New</h3>
             <Form addTodo={addTodo} />
         </div>
