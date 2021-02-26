@@ -19,7 +19,6 @@ const App = () => {
             title: title,
             completed: false
         }
-        console.log(newTodo);
         setTodos([...todos, newTodo]);
     }
 
